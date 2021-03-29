@@ -33,5 +33,15 @@ class DbHelper {
   jumlahBuku INTEGER
  )
  ''');
+    //pembuatan table anggota
+    await db.execute('''
+ CREATE TABLE anggota (
+ idAnggota INTEGER PRIMARY KEY AUTOINCREMENT,
+  namaAnggota TEXT,
+  jenisAnggota TEXT,
+  alamatAnggota TEXT,
+  nik TEXT
+ )
+ ''');
   }
 }
