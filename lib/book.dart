@@ -8,7 +8,7 @@ class Book {
   int _jumlahBuku;
   //konstruktor default
   Book(this._idBuku, this._kategoriBuku, this._namaBuku, this._penerbitBuku,
-      this._penulisBuku);
+      this._penulisBuku, this._jumlahBuku);
   // konstruktor konversi dari Map ke Item
   Book.fromMap(Map<String, dynamic> map) {
     this._idBuku = map['idBuku'];
@@ -30,4 +30,15 @@ class Book {
   set penulisBuku(String value) => this._penulisBuku = value;
   get jumlahBuku => this._jumlahBuku;
   set jumlahBuku(value) => this._jumlahBuku = value;
+  //memasukkan getter setter ke dalam Map
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = Map<String, dynamic>();
+    map['idBuku'] = this._idBuku;
+    map['kategoriBuku'] = kategoriBuku;
+    map['namaBuku'] = namaBuku;
+    map['penerbitBuku'] = penerbitBuku;
+    map['penulisBuku'] = penulisBuku;
+    map['jumlahBuku'] = jumlahBuku;
+    return map;
+  }
 }
