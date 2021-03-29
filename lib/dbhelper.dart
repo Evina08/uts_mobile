@@ -51,10 +51,24 @@ class DbHelper {
     var mapList = await db.query('book', orderBy: 'namaBuku');
     return mapList;
   }
+
   Future<List<Map<String, dynamic>>> select2() async {
     Database db = await this.initDb();
     var mapList = await db.query('anggota', orderBy: 'namaAnggota');
     return mapList;
   }
-  
+
+  //fungsi untuk mengisi data pada tabel book
+  Future<int> insert(Book object) async {
+    Database db = await this.initDb();
+    int count = await db.insert('book', object.toMap());
+    return count;
+  }
+
+  //fungsi untuk mengisi data pada tabel anggota
+  Future<int> insert2(Anggota object) async {
+    Database db = await this.initDb();
+    int count = await db.insert('anggota', object.toMap());
+    return count;
+  }
 }
