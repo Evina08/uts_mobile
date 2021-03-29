@@ -1,50 +1,48 @@
 import 'package:flutter/material.dart';
-import 'book.dart';
+import 'anggota.dart';
 
-class FormBook extends StatefulWidget {
-  final Book book;
-  FormBook(this.book);
+class AnggotaForm extends StatefulWidget {
+  final Anggota anggota;
+  AnggotaForm(this.anggota);
   @override
-  FormBookState createState() => FormBookState(this.book);
+  AnggotaFormState createState() => AnggotaFormState(this.anggota);
 }
 
-//memberi controller untuk menerima data
-class FormBookState extends State<FormBook> {
-  Book book;
-  FormBookState(this.book);
-  TextEditingController kategoriBukuController = TextEditingController();
-  TextEditingController namaBukuController = TextEditingController();
-  TextEditingController penerbitBukuController = TextEditingController();
-  TextEditingController penulisBukuController = TextEditingController();
-  TextEditingController jumlahBukuController = TextEditingController();
+//class controller
+class AnggotaFormState extends State<AnggotaForm> {
+  Anggota anggota;
+  AnggotaFormState(this.anggota);
+  TextEditingController namaAnggotaController = TextEditingController();
+  TextEditingController jenisAnggotaController = TextEditingController();
+  TextEditingController alamatAnggotaController = TextEditingController();
+  TextEditingController nikController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    //kondisi untuk memeriksa apakah data ditambahkan atau dirubah
-    if (book != null) {
-      kategoriBukuController.text = book.kategoriBuku;
-      namaBukuController.text = book.namaBuku;
-      penerbitBukuController.text = book.penerbitBuku;
-      penulisBukuController.text = book.penulisBuku;
-      jumlahBukuController.text = book.jumlahBuku.toString();
+    //kondisi
+    if (anggota != null) {
+      namaAnggotaController.text = anggota.namaAnggota;
+      jenisAnggotaController.text = anggota.jenisAnggota;
+      alamatAnggotaController.text = anggota.alamatAnggota;
+      nikController.text = anggota.nik.toString();
     }
-    //membuat widget
+    //rubah
     return Scaffold(
         appBar: AppBar(
-          title: book == null ? Text('Tambah') : Text('Edit'),
+          title: anggota == null ? Text('Tambah') : Text('Edit'),
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
           padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
           child: ListView(
             children: <Widget>[
-              // kolom form kategori buku
+              // nama
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: kategoriBukuController,
+                  controller: namaAnggotaController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Kategori Buku',
+                    labelText: 'Nama Anggota',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -54,14 +52,14 @@ class FormBookState extends State<FormBook> {
                   },
                 ),
               ),
-              // kolom form nama buku
+              // harga
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: namaBukuController,
+                  controller: jenisAnggotaController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Nama Buku',
+                    labelText: 'Jenis Anggota',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -71,14 +69,14 @@ class FormBookState extends State<FormBook> {
                   },
                 ),
               ),
-              //kolom form Penerbit buku
+              //stok
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: penerbitBukuController,
+                  controller: alamatAnggotaController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Penerbit Buku',
+                    labelText: 'Alamat Anggota',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -88,31 +86,13 @@ class FormBookState extends State<FormBook> {
                   },
                 ),
               ),
-              //kolom form penulis buku
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: penulisBukuController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Penulis Buku',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    //
-                  },
-                ),
-              ),
-              //kolom form jumlah buku
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: TextField(
-                  controller: jumlahBukuController,
+                  controller: nikController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Jumlah Buku',
+                    labelText: 'NIK ',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -137,21 +117,23 @@ class FormBookState extends State<FormBook> {
                           textScaleFactor: 1.5,
                         ),
                         onPressed: () {
-                          if (book == null) {
+                          if (anggota == null) {
                             // tambah data
-                            // book = Book(namaBukuController.text,
-                            //     int.parse(jumlahBukuController.text));
+                            // anggota = Anggota(
+                            //     namaAnggotaController.text,
+                            //    jenisAnggotaController.text,
+                            //     alamatAnggotaController.text,
+                            //     int.parse(nikController.text));
                           } else {
                             // ubah data
-                            book.kategoriBuku = kategoriBukuController.text;
-                            book.namaBuku = namaBukuController.text;
-                            book.penerbitBuku = penerbitBukuController.text;
-                            book.penulisBuku = penulisBukuController.text;
-                            book.jumlahBuku =
-                                int.parse(jumlahBukuController.text);
+                            anggota.namaAnggota = namaAnggotaController.text;
+                            anggota.jenisAnggota = jenisAnggotaController.text;
+                            anggota.alamatAnggota =
+                                alamatAnggotaController.text;
+                            anggota.nik = int.parse(nikController.text);
                           }
-                          // kembali ke layar sebelumnya dengan membawa objek
-                          Navigator.pop(context, book);
+                          // kembali ke layar sebelumnya dengan membawa objek item
+                          Navigator.pop(context, anggota);
                         },
                       ),
                     ),
