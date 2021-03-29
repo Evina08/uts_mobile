@@ -20,4 +20,18 @@ class DbHelper {
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return perpustakaanDatabase;
   }
+
+  //pembuatan table book
+  void _createDb(Database db, int version) async {
+    await db.execute('''
+ CREATE TABLE book (
+ idBuku INTEGER PRIMARY KEY AUTOINCREMENT,
+  kategoriBuku TEXT,
+  namaBuku TEXT,
+  penerbitBuku TEXT,
+  penulisBuku TEXT,
+  jumlahBuku INTEGER
+ )
+ ''');
+  }
 }
