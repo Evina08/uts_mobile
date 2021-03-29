@@ -117,21 +117,20 @@ class AnggotaFormState extends State<AnggotaForm> {
                           textScaleFactor: 1.5,
                         ),
                         onPressed: () {
-                          if (anggota == null) {
-                            // tambah data
-                            // anggota = Anggota(
-                            //     namaAnggotaController.text,
-                            //    jenisAnggotaController.text,
-                            //     alamatAnggotaController.text,
-                            //     int.parse(nikController.text));
-                          } else {
-                            // ubah data
-                            anggota.namaAnggota = namaAnggotaController.text;
-                            anggota.jenisAnggota = jenisAnggotaController.text;
-                            anggota.alamatAnggota =
-                                alamatAnggotaController.text;
-                            anggota.nik = int.parse(nikController.text);
-                          }
+                          // if (anggota == null) {
+                          // tambah data
+                          // anggota = Anggota(
+                          //     namaAnggotaController.text,
+                          //    jenisAnggotaController.text,
+                          //     alamatAnggotaController.text,
+                          //     int.parse(nikController.text));
+                          // } else {
+                          // ubah data
+                          anggota.namaAnggota = namaAnggotaController.text;
+                          anggota.jenisAnggota = jenisAnggotaController.text;
+                          anggota.alamatAnggota = alamatAnggotaController.text;
+                          anggota.nik = int.parse(nikController.text);
+                          //}
                           // kembali ke layar sebelumnya dengan membawa objek item
                           Navigator.pop(context, anggota);
                         },

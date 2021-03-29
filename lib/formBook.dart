@@ -137,19 +137,19 @@ class FormBookState extends State<FormBook> {
                           textScaleFactor: 1.5,
                         ),
                         onPressed: () {
-                          if (book == null) {
-                            // tambah data
-                            // book = Book(namaBukuController.text,
-                            //     int.parse(jumlahBukuController.text));
-                          } else {
-                            // ubah data
-                            book.kategoriBuku = kategoriBukuController.text;
-                            book.namaBuku = namaBukuController.text;
-                            book.penerbitBuku = penerbitBukuController.text;
-                            book.penulisBuku = penulisBukuController.text;
-                            book.jumlahBuku =
-                                int.parse(jumlahBukuController.text);
-                          }
+                          // if (book == null) {
+                          // tambah data
+                          // book = Book(namaBukuController.text,
+                          //     int.parse(jumlahBukuController.text));
+                          // } else {
+                          // ubah data
+                          book.kategoriBuku = kategoriBukuController.text;
+                          book.namaBuku = namaBukuController.text;
+                          book.penerbitBuku = penerbitBukuController.text;
+                          book.penulisBuku = penulisBukuController.text;
+                          book.jumlahBuku =
+                              int.parse(jumlahBukuController.text);
+                          //}
                           // kembali ke layar sebelumnya dengan membawa objek
                           Navigator.pop(context, book);
                         },
