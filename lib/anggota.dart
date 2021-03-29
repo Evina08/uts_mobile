@@ -26,4 +26,14 @@ class Anggota {
   set alamatAnggota(String value) => this._alamatAnggota = value;
   get nik => this._nik;
   set nik(value) => this._nik = value;
+  //memasukkan getter setter ke dalam Map
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = Map<String, dynamic>();
+    map['idAnggota'] = this._idAnggota;
+    map['namaAnggota'] = namaAnggota;
+    map['jenisAnggota'] = jenisAnggota;
+    map['alamatAnggota'] = alamatAnggota;
+    map['nik'] = nik;
+    return map;
+  }
 }
