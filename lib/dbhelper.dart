@@ -87,4 +87,19 @@ class DbHelper {
         where: 'idAnggota=?', whereArgs: [object.idAnggota]);
     return count;
   }
+  //fungsi untuk menghapus data tabel book
+
+  Future<int> delete(int idBuku) async {
+    Database db = await this.initDb();
+    int count = await db.delete('book', where: 'idBuku=?', whereArgs: [idBuku]);
+    return count;
+  }
+  //fungsi untuk menghapus data tabel book
+
+  Future<int> delete2(int idAnggota) async {
+    Database db = await this.initDb();
+    int count = await db
+        .delete('anggota', where: 'idAnggota=?', whereArgs: [idAnggota]);
+    return count;
+  }
 }
