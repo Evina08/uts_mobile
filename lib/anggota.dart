@@ -16,4 +16,14 @@ class Anggota {
     this._alamatAnggota = map['alamatAnggota'];
     this._nik = map['nik'];
   }
+  // pembuatan setter getter
+  int get idAnggota => _idAnggota;
+  String get namaAnggota => this._namaAnggota;
+  set namaAnggota(String value) => this._namaAnggota = value;
+  String get jenisAnggota => this._jenisAnggota;
+  set jenisAnggota(String value) => this._jenisAnggota = value;
+  String get alamatAnggota => this._alamatAnggota;
+  set alamatAnggota(String value) => this._alamatAnggota = value;
+  get nik => this._nik;
+  set nik(value) => this._nik = value;
 }

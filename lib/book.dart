@@ -21,7 +21,7 @@ class Book {
   // pembuatan setter getter
   int get idBuku => _idBuku;
   String get kategoriBuku => this._kategoriBuku;
-  set kategoriBuku(String value) => this._namaBuku = value;
+  set kategoriBuku(String value) => this._kategoriBuku = value;
   String get namaBuku => this._namaBuku;
   set namaBuku(String value) => this._namaBuku = value;
   String get penerbitBuku => this._penerbitBuku;
