@@ -102,4 +102,38 @@ class DbHelper {
         .delete('anggota', where: 'idAnggota=?', whereArgs: [idAnggota]);
     return count;
   }
+
+  //fungsi untuk mengembalikan nilai data data yang baru dimasukkan
+  Future<List<Book>> getBookList() async {
+    var bookMapList = await select();
+    int count = bookMapList.length;
+    List<Book> bookList = List<Book>();
+    for (int i = 0; i < count; i++) {
+      bookList.add(Book.fromMap(bookMapList[i]));
+    }
+    return bookList;
+  }
+
+  Future<List<Anggota>> getAnggotaList() async {
+    var anggotaMapList = await select();
+    int count = anggotaMapList.length;
+    List<Anggota> anggotaList = List<Anggota>();
+    for (int i = 0; i < count; i++) {
+      anggotaList.add(Anggota.fromMap(anggotaMapList[i]));
+    }
+    return anggotaList;
+  }
+
+  factory DbHelper() {
+    if (_dbHelper == null) {
+      _dbHelper = DbHelper._createObject();
+    }
+    return _dbHelper;
+  }
+  Future<Database> get database async {
+    if (_database == null) {
+      _database = await initDb();
+    }
+    return _database;
+  }
 }
