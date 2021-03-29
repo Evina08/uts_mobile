@@ -71,4 +71,20 @@ class DbHelper {
     int count = await db.insert('anggota', object.toMap());
     return count;
   }
+
+  //fungsi untuk update data tabel book
+  Future<int> update(Book object) async {
+    Database db = await this.initDb();
+    int count = await db.update('book', object.toMap(),
+        where: 'idBuku=?', whereArgs: [object.idBuku]);
+    return count;
+  }
+
+  //fungsi untuk update tabel anggota
+  Future<int> update2(Anggota object) async {
+    Database db = await this.initDb();
+    int count = await db.update('anggota', object.toMap(),
+        where: 'idAnggota=?', whereArgs: [object.idAnggota]);
+    return count;
+  }
 }
