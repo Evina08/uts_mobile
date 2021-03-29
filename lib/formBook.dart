@@ -19,7 +19,13 @@ class FormBookState extends State<FormBook> {
   TextEditingController jumlahBukuController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    //kondisi untuk memeriksa apakah data ditambahkan atau dirubah
+    if (book != null) {
+      kategoriBukuController.text = book.kategoriBuku;
+      namaBukuController.text = book.namaBuku;
+      penerbitBukuController.text = book.penerbitBuku;
+      penulisBukuController.text = book.penulisBuku;
+      jumlahBukuController.text = book.jumlahBuku;
+    }
   }
 }
