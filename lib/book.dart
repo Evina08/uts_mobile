@@ -12,7 +12,7 @@ class Book {
   // konstruktor konversi dari Map ke Item
   Book.fromMap(Map<String, dynamic> map) {
     this._idBuku = map['idBuku'];
-    this._kategoriBuku = map['nkategoriBuku'];
+    this._kategoriBuku = map['kategoriBuku'];
     this._namaBuku = map['namaBuku'];
     this._penerbitBuku = map['penerbitBuku'];
     this._penulisBuku = map['penulisBuku'];
