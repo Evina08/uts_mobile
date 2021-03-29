@@ -18,4 +18,16 @@ class Book {
     this._penulisBuku = map['penulisBuku'];
     this._jumlahBuku = map['jumlahBuku'];
   }
+  // pembuatan setter getter
+  int get idBuku => _idBuku;
+  String get kategoriBuku => this._kategoriBuku;
+  set kategoriBuku(String value) => this._namaBuku = value;
+  String get namaBuku => this._namaBuku;
+  set namaBuku(String value) => this._namaBuku = value;
+  String get penerbitBuku => this._penerbitBuku;
+  set penerbitBuku(String value) => this._penerbitBuku = value;
+  String get penulisBuku => this._penulisBuku;
+  set penulisBuku(String value) => this._penulisBuku = value;
+  get jumlahBuku => this._jumlahBuku;
+  set jumlahBuku(value) => this._jumlahBuku = value;
 }
