@@ -44,4 +44,17 @@ class DbHelper {
  )
  ''');
   }
+
+  //fungsi untuk select database
+  Future<List<Map<String, dynamic>>> select() async {
+    Database db = await this.initDb();
+    var mapList = await db.query('book', orderBy: 'namaBuku');
+    return mapList;
+  }
+  Future<List<Map<String, dynamic>>> select2() async {
+    Database db = await this.initDb();
+    var mapList = await db.query('anggota', orderBy: 'namaAnggota');
+    return mapList;
+  }
+  
 }
