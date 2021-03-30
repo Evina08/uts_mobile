@@ -6,6 +6,8 @@ import 'formAnggota.dart';
 import 'anggota.dart';
 
 class HomeAnggota extends StatefulWidget {
+  HomeAnggota(HomeAnggota anggota);
+
   @override
   HomeAnggotaState createState() => HomeAnggotaState();
 }

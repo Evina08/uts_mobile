@@ -1,6 +1,6 @@
 //kode utama Aplikasi tampilan awal
 import 'package:flutter/material.dart';
-import 'homeBook.dart'; //package letak folder Anda
+import 'home.dart'; //package letak folder Anda
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: HomeBook(),
+      home: Home(),
     );
   }
 }
