@@ -6,8 +6,8 @@ class Anggota {
   String _alamatAnggota;
   int _nik;
   //konstruktor default
-  Anggota(this._idAnggota, this._namaAnggota, this._jenisAnggota,
-      this._alamatAnggota, this._nik);
+  Anggota(
+      this._namaAnggota, this._jenisAnggota, this._alamatAnggota, this._nik);
   // konstruktor konversi dari Map ke Item
   Anggota.fromMap(Map<String, dynamic> map) {
     this._idAnggota = map['idAnggota'];

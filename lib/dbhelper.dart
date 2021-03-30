@@ -16,7 +16,7 @@ class DbHelper {
 
     //create, read databases
     var perpustakaanDatabase =
-        openDatabase(path, version: 1, onCreate: _createDb);
+        openDatabase(path, version: 3, onCreate: _createDb);
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return perpustakaanDatabase;
   }
@@ -40,7 +40,7 @@ class DbHelper {
   namaAnggota TEXT,
   jenisAnggota TEXT,
   alamatAnggota TEXT,
-  nik TEXT
+  nik INTEGER
  )
  ''');
   }

@@ -18,10 +18,7 @@ class HomeAnggotaState extends State<HomeAnggota> {
   List<Anggota> anggotaList;
   @override
   Widget build(BuildContext context) {
-    void initState() {
-      super.initState();
-      updateListView();
-    }
+    updateListView();
 
     if (anggotaList == null) {
       anggotaList = List<Anggota>();
@@ -77,7 +74,7 @@ class HomeAnggotaState extends State<HomeAnggota> {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.red,
-              child: Icon(Icons.ad_units),
+              child: Icon(Icons.people),
             ),
             title: Text(
               this.anggotaList[index].namaAnggota,

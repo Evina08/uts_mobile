@@ -6,6 +6,8 @@ import 'formBook.dart';
 import 'book.dart';
 
 class HomeBook extends StatefulWidget {
+  HomeBook(HomeBook);
+
   @override
   HomeBookState createState() => HomeBookState();
 }
@@ -16,10 +18,7 @@ class HomeBookState extends State<HomeBook> {
   List<Book> bookList;
   @override
   Widget build(BuildContext context) {
-    void initState() {
-      super.initState();
-      updateListView();
-    }
+    updateListView();
 
     if (bookList == null) {
       bookList = List<Book>();

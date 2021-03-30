@@ -7,7 +7,7 @@ class Book {
   String _penulisBuku;
   int _jumlahBuku;
   //konstruktor default
-  Book(this._idBuku, this._kategoriBuku, this._namaBuku, this._penerbitBuku,
+  Book(this._kategoriBuku, this._namaBuku, this._penerbitBuku,
       this._penulisBuku, this._jumlahBuku);
   // konstruktor konversi dari Map ke Item
   Book.fromMap(Map<String, dynamic> map) {
