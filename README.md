@@ -6,7 +6,7 @@
 - NIM : 1931710072
 
 - Tampilan Halaman Buku
--  ![gambar 1](image/8.jpeg)
+  ![gambar 1](image/8.jpeg)
 - Tampilan Form Buku
   ![gambar 2](image/7.jpeg)
 - Edit Buku
