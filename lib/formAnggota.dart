@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'anggota.dart';
-import 'dbhelper.dart';
 
 class AnggotaForm extends StatefulWidget {
   final Anggota anggota;
@@ -17,6 +16,7 @@ class AnggotaFormState extends State<AnggotaForm> {
   TextEditingController jenisAnggotaController = TextEditingController();
   TextEditingController alamatAnggotaController = TextEditingController();
   TextEditingController nikController = TextEditingController();
+  TextEditingController umurController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     //kondisi
@@ -25,6 +25,7 @@ class AnggotaFormState extends State<AnggotaForm> {
       jenisAnggotaController.text = anggota.jenisAnggota;
       alamatAnggotaController.text = anggota.alamatAnggota;
       nikController.text = anggota.nik.toString();
+      umurController.text = anggota.umur.toString();
     }
     //rubah
     return Scaffold(
@@ -53,7 +54,7 @@ class AnggotaFormState extends State<AnggotaForm> {
                   },
                 ),
               ),
-              // harga
+              // jenis anggota
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
@@ -70,7 +71,7 @@ class AnggotaFormState extends State<AnggotaForm> {
                   },
                 ),
               ),
-              //stok
+              //alamat anggota
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
@@ -87,6 +88,7 @@ class AnggotaFormState extends State<AnggotaForm> {
                   },
                 ),
               ),
+              // nik
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
@@ -94,6 +96,23 @@ class AnggotaFormState extends State<AnggotaForm> {
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'NIK ',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    //
+                  },
+                ),
+              ),
+              //umur
+              Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: TextField(
+                  controller: umurController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Umur Anggota',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -124,7 +143,8 @@ class AnggotaFormState extends State<AnggotaForm> {
                                 namaAnggotaController.text,
                                 jenisAnggotaController.text,
                                 alamatAnggotaController.text,
-                                int.parse(nikController.text));
+                                int.parse(nikController.text),
+                                int.parse(umurController.text));
                           } else {
                             // ubah data
                             anggota.namaAnggota = namaAnggotaController.text;
@@ -132,6 +152,7 @@ class AnggotaFormState extends State<AnggotaForm> {
                             anggota.alamatAnggota =
                                 alamatAnggotaController.text;
                             anggota.nik = int.parse(nikController.text);
+                            anggota.umur = int.parse(umurController.text);
                           }
                           // kembali ke layar sebelumnya dengan membawa objek item
                           Navigator.pop(context, anggota);

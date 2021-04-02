@@ -20,10 +20,10 @@ class HomeState extends State<Home> {
       body: ListView(
         children: <Widget>[
           Container(
-            alignment: Alignment.center,
+            alignment: Alignment.topCenter,
             child: SizedBox(
-              width: 80,
-              height: 80,
+              width: 300,
+              height: 300,
               child: RaisedButton(
                 child: Text("Anggota"),
                 color: Colors.deepOrange[400],
@@ -35,7 +35,7 @@ class HomeState extends State<Home> {
             ),
           ),
           Container(
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
             child: SizedBox(
               width: 80,
               height: 80,

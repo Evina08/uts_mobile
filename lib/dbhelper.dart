@@ -16,14 +16,22 @@ class DbHelper {
 
     //create, read databases
     var perpustakaanDatabase =
-        openDatabase(path, version: 3, onCreate: _createDb);
+        openDatabase(path, version: 4, onCreate: _createDb);
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return perpustakaanDatabase;
   }
 
+  //update tabel
+  void _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    _createDb(db, newVersion);
+  }
+
   //pembuatan table book
   void _createDb(Database db, int version) async {
-    await db.execute('''
+    var batch = db.batch();
+    batch.execute('DROP TABLE IF EXISTS book');
+    batch.execute('DROP TABLE IF EXISTS anggota');
+    batch.execute('''
  CREATE TABLE book (
  idBuku INTEGER PRIMARY KEY AUTOINCREMENT,
   kategoriBuku TEXT,
@@ -34,46 +42,48 @@ class DbHelper {
  )
  ''');
     //pembuatan table anggota
-    await db.execute('''
+    batch.execute('''
  CREATE TABLE anggota (
  idAnggota INTEGER PRIMARY KEY AUTOINCREMENT,
   namaAnggota TEXT,
   jenisAnggota TEXT,
   alamatAnggota TEXT,
-  nik INTEGER
+  nik INTEGER,
+  umur INTEGER
  )
  ''');
+    await batch.commit();
   }
 
   //fungsi untuk select database
-  Future<List<Map<String, dynamic>>> select() async {
+  Future<List<Map<String, dynamic>>> selectBook() async {
     Database db = await this.initDb();
     var mapList = await db.query('book', orderBy: 'namaBuku');
     return mapList;
   }
 
-  Future<List<Map<String, dynamic>>> select2() async {
+  Future<List<Map<String, dynamic>>> selectAnggota() async {
     Database db = await this.initDb();
     var mapList = await db.query('anggota', orderBy: 'namaAnggota');
     return mapList;
   }
 
   //fungsi untuk mengisi data pada tabel book
-  Future<int> insert(Book object) async {
+  Future<int> insertBook(Book object) async {
     Database db = await this.initDb();
     int count = await db.insert('book', object.toMap());
     return count;
   }
 
   //fungsi untuk mengisi data pada tabel anggota
-  Future<int> insert2(Anggota object) async {
+  Future<int> insertAnggota(Anggota object) async {
     Database db = await this.initDb();
     int count = await db.insert('anggota', object.toMap());
     return count;
   }
 
   //fungsi untuk update data tabel book
-  Future<int> update(Book object) async {
+  Future<int> updateBook(Book object) async {
     Database db = await this.initDb();
     int count = await db.update('book', object.toMap(),
         where: 'idBuku=?', whereArgs: [object.idBuku]);
@@ -81,7 +91,7 @@ class DbHelper {
   }
 
   //fungsi untuk update tabel anggota
-  Future<int> update2(Anggota object) async {
+  Future<int> updateAnggota(Anggota object) async {
     Database db = await this.initDb();
     int count = await db.update('anggota', object.toMap(),
         where: 'idAnggota=?', whereArgs: [object.idAnggota]);
@@ -89,14 +99,14 @@ class DbHelper {
   }
   //fungsi untuk menghapus data tabel book
 
-  Future<int> delete(int idBuku) async {
+  Future<int> deleteBook(int idBuku) async {
     Database db = await this.initDb();
     int count = await db.delete('book', where: 'idBuku=?', whereArgs: [idBuku]);
     return count;
   }
   //fungsi untuk menghapus data tabel book
 
-  Future<int> delete2(int idAnggota) async {
+  Future<int> deleteAnggota(int idAnggota) async {
     Database db = await this.initDb();
     int count = await db
         .delete('anggota', where: 'idAnggota=?', whereArgs: [idAnggota]);
@@ -105,7 +115,7 @@ class DbHelper {
 
   //fungsi untuk mengembalikan nilai data data yang baru dimasukkan
   Future<List<Book>> getBookList() async {
-    var bookMapList = await select();
+    var bookMapList = await selectBook();
     int count = bookMapList.length;
     List<Book> bookList = List<Book>();
     for (int i = 0; i < count; i++) {
@@ -115,7 +125,7 @@ class DbHelper {
   }
 
   Future<List<Anggota>> getAnggotaList() async {
-    var anggotaMapList = await select();
+    var anggotaMapList = await selectAnggota();
     int count = anggotaMapList.length;
     List<Anggota> anggotaList = List<Anggota>();
     for (int i = 0; i < count; i++) {

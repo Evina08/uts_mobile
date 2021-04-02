@@ -6,7 +6,7 @@ import 'formAnggota.dart';
 import 'anggota.dart';
 
 class HomeAnggota extends StatefulWidget {
-  HomeAnggota(HomeAnggota anggota);
+  HomeAnggota(HomeAnggota);
 
   @override
   HomeAnggotaState createState() => HomeAnggotaState();
@@ -37,11 +37,13 @@ class HomeAnggotaState extends State<HomeAnggota> {
             width: double.infinity,
             child: RaisedButton(
               child: Text("Tambah Anggota"),
+              color: Colors.deepOrange[400],
+              textColor: Colors.white,
               onPressed: () async {
                 var anggota = await navigateToEntryForm(context, null);
                 if (anggota != null) {
                   //TODO 2 Panggil Fungsi untuk Insert ke DB
-                  int result = await dbHelper.insert2(anggota);
+                  int result = await dbHelper.insertAnggota(anggota);
                   if (result > 0) {
                     updateListView();
                   }
@@ -85,7 +87,7 @@ class HomeAnggotaState extends State<HomeAnggota> {
               child: Icon(Icons.delete),
               onTap: () async {
                 //TODO 3 Panggil Fungsi untuk Delete dari DB berdasarkan Item
-                dbHelper.delete2(this.anggotaList[index].idAnggota);
+                dbHelper.deleteAnggota(this.anggotaList[index].idAnggota);
                 updateListView();
               },
             ),
@@ -94,7 +96,7 @@ class HomeAnggotaState extends State<HomeAnggota> {
                   await navigateToEntryForm(context, this.anggotaList[index]);
               //TODO 4 Panggil Fungsi untuk Edit data
               if (anggota != null) {
-                int result = await dbHelper.update2(anggota);
+                int result = await dbHelper.updateAnggota(anggota);
                 if (result > 0) {
                   updateListView();
                 }
