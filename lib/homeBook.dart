@@ -38,7 +38,7 @@ class HomeBookState extends State<HomeBook> {
             child: RaisedButton(
               child: Text("Tambah Buku"),
               color: Colors.deepOrange[400],
-                textColor: Colors.white,
+              textColor: Colors.white,
               onPressed: () async {
                 var book = await navigateToEntryForm(context, null);
                 if (book != null) {
@@ -81,7 +81,9 @@ class HomeBookState extends State<HomeBook> {
               this.bookList[index].namaBuku,
               style: textStyle,
             ),
-            subtitle: Text("Jumlah: " +
+            subtitle: Text("ID buku: " +
+                this.bookList[index].idBuku.toString() +
+                "Jumlah: " +
                 this.bookList[index].jumlahBuku.toString() +
                 "  Penulis: " +
                 this.bookList[index].penulisBuku),
